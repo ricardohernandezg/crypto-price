@@ -13,7 +13,7 @@ app.get('/api/criptos', async (req, res) => {
   try {
     // Llama CoinGecko (gratis)
     //let url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,cardano&vs_currencies=usd&include_24hr_change=true';
-    let url = 'https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd&symbols=btc,eth,bnsol,ada,sui,xrp,wbeth,bnb,paxg,sol';
+    let url = 'https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd&symbols=btc,eth,bnsol,ada,sui,xrp,wbeth,bnb,paxg,sol,aster';
     const { data } = await axios.get(
       url
     );
