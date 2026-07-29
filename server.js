@@ -68,7 +68,7 @@ app.get('/api/criptos-xml', async (req, res) => {
 
     const preciosArray = Object.entries(data).map(([id, cripto]) => ({
       name: cripto.symbol.replace('USDT', '').toUpperCase(),
-      price: parseFloat(cripto.price).toLocaleString('es-VE'),
+      price: parseFloat(cripto.price).toFixed(4),
       timestamp: new Date().toLocaleString('es-VE')
     }));
 
