@@ -61,6 +61,39 @@ app.get('/api/criptos', async (req, res) => {
   }
 });
 
+
+app.get('/api/criptos-xml', async (req, res) => {
+  try {
+    let url = targetUrl;
+    const { data } = await axios.get(url);
+
+    const preciosArray = Object.entries(data).map(([id, cripto]) => ({
+      name: cripto.symbol.replace('USDT', '').toUpperCase(),
+      price: parseFloat(cripto.price).toFixed(4),
+      timestamp: new Date().toLocaleString('es-VE')
+    }));
+
+    // Construcción manual del string XML
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<root>\n';
+    preciosArray.forEach(item => {
+      xml += '  <cripto>\n';
+      xml += `    <name>${item.name}</name>\n`;
+      xml += `    <price>${item.price}</price>\n`;
+      xml += `    <timestamp>${item.timestamp}</timestamp>\n`;
+      xml += '  </cripto>\n';
+    });
+    xml += '</root>';
+
+    res.set('Content-Type', 'application/xml');
+    res.status(200).send(xml);
+
+  } catch (error) {
+    res.set('Content-Type', 'application/xml');
+    res.status(500).send('<?xml version="1.0" encoding="UTF-8"?><root><cripto><error>No precios disponibles</error></cripto></root>');
+  }
+});
+
+
 // Test endpoint
 app.get('/', (req, res) => {
   res.json({ mensaje: '🪙 Servidor crypto listo! Usa /api/criptos' });
