@@ -110,4 +110,5 @@ app.get('/tamper', (req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Servidor en http://localhost:${PORT}`);
   console.log(`📊 Excel: http://localhost:${PORT}/api/criptos`);
+  console.log(`📊 LibreOffice: http://localhost:${PORT}/api/criptos-xml`);
 });
