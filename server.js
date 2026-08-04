@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 app.use(cors()); // Excel accede sin problemas
@@ -102,7 +103,16 @@ app.get('/', (req, res) => {
   res.json({ mensaje: '🪙 Servidor crypto listo! Usa /api/criptos' });
 });
 
+// Test endpoint
+/*
+app.get('/tamper', (req, res) => {
+  const rutaArchivo = path.join(__dirname, '/mercantil_1.5.txt');
+  res.sendFile(rutaArchivo);
+});
+*/
+
 app.listen(PORT, () => {
   console.log(`🚀 Servidor en http://localhost:${PORT}`);
   console.log(`📊 Excel: http://localhost:${PORT}/api/criptos`);
+  console.log(`📊 LibreOffice: http://localhost:${PORT}/api/criptos-xml`);
 });
