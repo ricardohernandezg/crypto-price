@@ -66,6 +66,7 @@ app.get('/api/criptos-xml', async (req, res) => {
     let url = targetUrl;
     const { data } = await axios.get(url);
 
+
     const preciosArray = Object.entries(data).map(([id, cripto]) => ({
       name: cripto.symbol.replace('USDT', '').toUpperCase(),
       price: parseFloat(cripto.price).toFixed(4),
@@ -77,7 +78,10 @@ app.get('/api/criptos-xml', async (req, res) => {
     preciosArray.forEach(item => {
       xml += '  <cripto>\n';
       xml += `    <name>${item.name}</name>\n`;
-      xml += `    <price>${item.price}</price>\n`;
+      xml += `    <price>` + new Intl.NumberFormat('es-VE', {
+  minimumFractionDigits: 4,
+  maximumFractionDigits: 4
+}).format(item.price) +  `</price>\n`;
       xml += `    <timestamp>${item.timestamp}</timestamp>\n`;
       xml += '  </cripto>\n';
     });
