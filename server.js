@@ -29,7 +29,7 @@ function buildBinanceUrl(symbols) {
 
 // --- Ejemplo de uso ---
 
-const misMonedas = ['btcusdt', 'bnbusdt', 'ethusdt', 'solusdt', 'adausdt', 'suiusdt', 'wbethusdt', 'xrpusdt', 'paxgusdt', 'bnsolusdt', 'asterusdt'];
+const misMonedas = ['btcusdt', 'bnbusdt', 'ethusdt', 'solusdt', 'adausdt', 'suiusdt', 'wbethusdt', 'xrpusdt', 'paxgusdt', 'bnsolusdt', 'asterusdt', 'zecusdt', 'dogeusdt'];
 const targetUrl = buildBinanceUrl(misMonedas);
 
 //console.log(targetUrl);
