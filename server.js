@@ -29,8 +29,8 @@ function buildBinanceUrl(symbols) {
 
 // --- Ejemplo de uso ---
 
-const misMonedas = ['btcusdt', 'bnbusdt', 'ethusdt', 'solusdt', 'adausdt', 'suiusdt', 'wbethusdt', 'xrpusdt', 'paxgusdt', 'bnsolusdt', 'asterusdt'];
-const targetUrl = buildBinanceUrl(misMonedas);
+const pairs = ['btcusdt', 'bnbusdt', 'ethusdt', 'solusdt', 'adausdt', 'suiusdt', 'wbethusdt', 'xrpusdt', 'paxgusdt', 'bnsolusdt', 'asterusdt', 'dogeusdt','zecusdt'];
+const targetUrl = buildBinanceUrl(pairs);
 
 //console.log(targetUrl);
 // Resultado:
@@ -48,7 +48,7 @@ app.get('/api/criptos', async (req, res) => {
       url
     );
 
-    // Formato PERFECTO para Excel (array de objetos)
+    // Formato para Excel (array de objetos)
     const precios = Object.entries(data).map(([id, cripto]) => ({
       name: cripto.symbol.replace('USDT','').toUpperCase(),
       price: `${parseFloat(cripto.price).toLocaleString('es-VE')}`,
